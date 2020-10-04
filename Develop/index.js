@@ -8,8 +8,8 @@ var data = {
     installation: "",
     usage: "",
     license: "",
-    contribution: "",
-    test: "",
+    contributing: "",
+    tests: "",
     github: "",
     email: ""
 }
@@ -163,8 +163,8 @@ function init() {
         data.installation = response.installation;
         data.usage = response.usage;
         data.license = response.license;
-        data.contribution = response.contribution;
-        data.test = response.test;
+        data.contributing = response.contributing;
+        data.tests = response.tests;
         data.github = response.github;
         data.email = response.email;
 
