@@ -12,8 +12,8 @@ function generateMarkdown(data) {
   let github = "## GitHub";
   let email = "## Email";
 
-  return `# ${data.title}`
-;
+  return `# ${data.title}`;
+
 }
 
 module.exports = generateMarkdown;
