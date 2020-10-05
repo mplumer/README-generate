@@ -15,48 +15,70 @@ const generateMarkdown = data => {
   let badge = `![](https://img.shields.io/badge/License-${licenseCode}-blue.svg)`
   let table = " "
   let mainMarkdown = " ";
-  // const toc = {
-  //   installation: installation,
-  //   usage: usage,
-  //   contributing: contributing,
-  //   test: tests,
-  //   github: github,
-  //   email: email
-  // }
 
   if (confirmContents) {
     table = "## Table of Contents"
   };
 
   if (installation) {
-    table += `* [Installation](#installation)`
+    table +=
+      `
+  * [Installation](#installation)`
 
-    mainMarkdown += `### Installation${installation}`
+    mainMarkdown += `### Installation
+  ${installation}`
 
   };
 
   if (usage) {
-    table += ` * [Usage](#usage)`
+    table +=
+      ` 
+ * [Usage](#usage)`
 
-    mainMarkdown += `### Usage${usage}`
+    mainMarkdown +=
+      `
+ ### Usage
+ ${usage}`
   };
+  if (license) {
+    table +=
+      ` 
+ * [License](#license)`
 
+    mainMarkdown +=
+      `
+ ### License 
+ ${license}`
+  };
   if (contributing) {
-    table += ` * [Contributing](#contributing)`
+    table +=
+      ` 
+* [Contributing](#contributing)`
 
-    mainMarkdown += `### Contributing${contributing}`
+    mainMarkdown +=
+      `
+### Contributing
+${contributing}
+`
   };
-  
   if (tests) {
-    table += `* [Tests](#tests)`
+    table +=
+      `
+* [Tests](#tests)`
 
-    mainMarkdown += `### Tests${tests}`
+    mainMarkdown +=
+      `
+### Tests
+${tests}
+`
   };
   if (github || email) {
-    table += ` * [Questions](#questions)`
+    table +=
+      `  
+* [Questions](#questions)`
 
-    mainMarkdown += 
-    `
+    mainMarkdown +=
+      `
 ### Questions
 ##### For additional information, please refer to the following contact links:
     `

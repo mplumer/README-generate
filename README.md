@@ -1,5 +1,5 @@
 
-# Project Title
+# README Generator
 
 # License
 ![](https://img.shields.io/badge/License-GNU%20General%20Public%20License%20(GPL)-blue.svg)
