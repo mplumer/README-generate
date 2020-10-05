@@ -1,8 +1,9 @@
 // function to generate markdown for README
-function generateMarkdown(data) {
+const generateMarkdown = data => {
 
   let title = data.title;
   let description = data.description;
+  let confirmContents = data.confirmContents
   let installation = data.installation;
   let usage = data.usage;
   let license = data.license;
@@ -12,29 +13,76 @@ function generateMarkdown(data) {
   let github = data.github;
   let email = data.email;
   let badge = `![](https://img.shields.io/badge/License-${licenseCode}-blue.svg)`
+  let table = " "
+  let mainMarkdown = " ";
+  // const toc = {
+  //   installation: installation,
+  //   usage: usage,
+  //   contributing: contributing,
+  //   test: tests,
+  //   github: github,
+  //   email: email
+  // }
+
+  if (confirmContents) {
+    table = "## Table of Contents"
+  };
+
+  if (installation) {
+    table += `* [Installation](#installation)`
+
+    mainMarkdown += `### Installation${installation}`
+
+  };
+
+  if (usage) {
+    table += ` * [Usage](#usage)`
+
+    mainMarkdown += `### Usage${usage}`
+  };
+
+  if (contributing) {
+    table += ` * [Contributing](#contributing)`
+
+    mainMarkdown += `### Contributing${contributing}`
+  };
+  
+  if (tests) {
+    table += `* [Tests](#tests)`
+
+    mainMarkdown += `### Tests${tests}`
+  };
+  if (github || email) {
+    table += ` * [Questions](#questions)`
+
+    mainMarkdown += 
+    `
+### Questions
+##### For additional information, please refer to the following contact links:
+    `
+  };
+  if (github) {
+    mainMarkdown +=
+      `
+##### GitHub
+https://github.com/${github}
+    `
+  };
+  if (email) {
+    mainMarkdown +=
+      `
+##### Email
+${email}
+    `
+  };
 
   return `# ${title}
 ${badge}
 ## Description 
 ${description}
+${table}
+${mainMarkdown}
     
-## Table of Contents
-## Installation
-${installation}
-## Usage
-${usage}
-## License
-${license}
-## Contributing
-${contributing}
-## Tests
-${tests}
-## Questions
-For additional information, please refer to the following contact links:
-### GitHub
-https://github.com/${github}
-### Email
-${email}
 `;
 }
 

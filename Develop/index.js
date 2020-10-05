@@ -5,11 +5,13 @@ const generateMarkdown = require('./utils/generateMarkdown');
 var data = {
     title: "",
     description: "",
+    confirmContents: true,
     installation: "",
     usage: "",
     license: "",
     contributing: "",
     tests: "",
+    confirmQuestions: true,
     github: "",
     email: ""
 }
@@ -48,98 +50,53 @@ const questions = [{
     default: true
 },
 {
-    type: 'checkbox',
-    name: 'contents',
-    message: 'Choose which contents to include in your table.',
-    choices: ['Installation', 'Usage', 'License', 'Contributing', 'Tests', 'Questions'],
-    when: ({
-        confirmContents
-    }) => confirmContents
-},
-{
     type: 'input',
     name: 'installation',
-    message: 'Describe how to install your project. (Required)',
-    validate: nameInput => {
-        if (nameInput) {
-            return true;
-        } else {
-            console.log('Please describe how to install your project!');
-            return false;
-        }
-    }
+    message: 'Describe how to install your project. (Optional)',
 },
 {
     type: 'input',
     name: 'usage',
-    message: 'Explain how to use your project. (Required)',
-    validate: nameInput => {
-        if (nameInput) {
-            return true;
-        } else {
-            console.log('Please explain how to use your project!');
-            return false;
-        }
-    }
+    message: 'Explain how to use your project. (Optional)',
 },
 {
     type: 'list',
     name: 'license',
-    message: 'What type of license does your project have? (Required)',
-    choices: ['GNU General Public License (GPL)', 'Apache', 'Microsoft Public Licenses (Ms-PL)', 'Berkeley Software Distribution (BSD)', 'Common Development and Distribution License (CDDL)', 'Eclipse Public License (EPL)', 'MIT']
+    message: 'What type of license will your project have?',
+    choices: ['GNU General Public License (GPL)', 'Apache', 'Microsoft Public Licenses (Ms--PL)', 'Berkeley Software Distribution (BSD)', 'Common Development and Distribution License (CDDL)', 'Eclipse Public License (EPL)', 'MIT']
 
 },
 {
     type: 'input',
     name: 'contributing',
-    message: 'Describe the guidelines for contributing to your project. (Required)',
-    validate: nameInput => {
-        if (nameInput) {
-            return true;
-        } else {
-            console.log('Please describe guidelines for contributing to your project!');
-            return false;
-        }
-    }
+    message: 'Describe the guidelines for contributing to your project. (Optional)',
 },
 {
     type: 'input',
     name: 'tests',
-    message: 'Write tests for your project and describe how to run them. (Required)',
-    validate: nameInput => {
-        if (nameInput) {
-            return true;
-        } else {
-            console.log('Please write tests for your project!');
-            return false;
-        }
-    }
+    message: 'Write tests for your project and describe how to run them. (Optional)',
+},
+{
+    type: 'confirm',
+    name: 'confirmQuestions',
+    message: 'Would you like to include a Questions section with a link to your GitHub page and/or email address?',
+    default: true
 },
 {
     type: 'input',
     name: 'github',
-    message: 'Enter your GitHub username. (Required)',
-    validate: nameInput => {
-        if (nameInput) {
-            return true;
-        } else {
-            console.log('Please enter your GitHub username!');
-            return false;
-        }
-    }
+    message: 'Enter your GitHub username. (Optional)',
+    when: ({
+        confirmQuestions
+    }) => confirmQuestions
 },
 {
     type: 'input',
     name: 'email',
-    message: 'Enter your email address. (Required)',
-    validate: nameInput => {
-        if (nameInput) {
-            return true;
-        } else {
-            console.log('Please enter your email address!');
-            return false;
-        }
-    }
+    message: 'Enter your email address. (Optional)',
+    when: ({
+        confirmQuestions
+    }) => confirmQuestions
 }
 ];
 
@@ -153,18 +110,19 @@ const writeReadme = (fileName, data) => {
     });
 }
 
-
 // // function to initialize program
-function init() {
+const init = () => {
     inquirer.prompt(questions).then(response => {
 
         data.title = response.title;
         data.description = response.description;
+        data.confirmContents = response.confirmContents;
         data.installation = response.installation;
         data.usage = response.usage;
         data.license = response.license;
         data.contributing = response.contributing;
         data.tests = response.tests;
+        data.confirmQuestions = response.confirmQuestions;
         data.github = response.github;
         data.email = response.email;
 
