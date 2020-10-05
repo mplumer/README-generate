@@ -80,7 +80,7 @@ ${tests}
     mainMarkdown +=
       `
 ### Questions
-##### For additional information, please refer to the following contact links:
+##### Interested in other projects from this developer? Visit the following GitHub profile:
     `
   };
   if (github) {
@@ -93,7 +93,7 @@ https://github.com/${github}
   if (email) {
     mainMarkdown +=
       `
-##### Email
+##### Send any questions to the following email address:
 ${email}
     `
   };
