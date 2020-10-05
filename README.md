@@ -16,7 +16,7 @@ This README generator is a Node.js based application that accepts input from the
 
 
 ### Installation
-Clone or fork the code from the README-Generator repository on GitHub.
+Clone or fork the code from the README-generate repository on GitHub.
 
 ### Usage
 Use the integrated terminal within your preferred code-editing application to enter on the command "node index.js". Enter the requested information to generate your custom README.md file.
