@@ -126,7 +126,7 @@ const init = () => {
         data.github = response.github;
         data.email = response.email;
 
-        writeReadme("README.md", data);
+        writeReadme("generated-README.md", data);
     })
 };
 
